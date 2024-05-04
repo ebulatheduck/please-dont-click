@@ -6,5 +6,7 @@ Just a fun project that I started. I am trying to get the message across that no
 
 ## Links
 
-bitly: <https://bit.ly/35D419C> \
-pages: <https://ebulatheduck.github.io/please-dont-click>
+| Source | Link                                               |
+|:------:|----------------------------------------------------|
+| bitly  | <https://bit.ly/35D419C>                           |
+| pages  | <https://ebulatheduck.github.io/please-dont-click> |
